@@ -31,23 +31,21 @@ while True:
                                     GPIO.output(13, False)
                                     print "Olculuyor..."
                                     time.sleep(0.2)
+				    GPIO.output(13, True)
+				    time.sleep(0.00001)
+				    GPIO.output(13, False)
+		                    while GPIO.input(15)==0:
+				    	pulse_start = time.time()
+				while GPIO.input(15)==1:
+					pulse_end = time.time()
+				pulse_duration = pulse_end - pulse_start
+				distance = pulse_duration * 17150
+				distance = round(distance, 2)
+				if distance > 2 and distance < 30:
+					GPIO.output(11,GPIO.HIGH)
+				else
+					GPIO.output(11,GPIO.LOW)
 
-                                    GPIO.output(13, True)
-                                    time.sleep(0.00001)
-                                    GPIO.output(13, False)
 
-                                    while GPIO.input(15)==0:
-                                        pulse_start = time.time()
-
-                                    while GPIO.input(15)==1:
-                                        pulse_end = time.time()
-                                    pulse_duration = pulse_end - pulse_start
-                                    distance = pulse_duration * 17150
-                                    distance = round(distance, 2)
-
-                                    if distance > 2 and distance < 30:
-                                        GPIO.output(11,GPIO.HIGH)
-                                    else:
-                                        GPIO.output(11,GPIO.LOW)
 
 
